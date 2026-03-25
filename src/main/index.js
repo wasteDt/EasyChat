@@ -3,14 +3,22 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
+const login_width = 300;
+
+const login_height = 370;
+
+const register_height = 490;
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    icon: icon,
+    width: login_width,
+    height: login_height,
     show: false,
     autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon } : {}),
+    titleBarStyle: 'hidden',
+    resizable: false,
+    frame: true,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
